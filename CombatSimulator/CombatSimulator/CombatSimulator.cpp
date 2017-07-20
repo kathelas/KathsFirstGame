@@ -9,7 +9,6 @@
 
 void Start(Player* Player);
 void Fight(Player* Player);
-void StartFight(Player* Player);
 Enemy* CreateEnemy();
 
 

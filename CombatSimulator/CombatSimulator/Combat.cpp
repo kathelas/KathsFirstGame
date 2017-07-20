@@ -52,11 +52,12 @@ bool Combat::GoodWeapon(int WeaponType, int EnemyType)
 
 void Combat::PlayerHitsEnemy(Player* Player, Enemy* Enemy)
 {
-	if (HitType(rand(), Player->GetCurrentMissChance(Player->GetWeaponType()), Player->GetCurrentCritChance(Player->GetWeaponType())) == 0)  //miss
+	int Hit = HitType(rand(), Player->GetCurrentMissChance(Player->GetWeaponType()), Player->GetCurrentCritChance(Player->GetWeaponType()));
+	if (Hit == 0)  //miss
 	{
 		std::cout << Player->GetName() << " missed!\n";
 	}
-	if (HitType(rand(), Player->GetCurrentMissChance(Player->GetWeaponType()), Player->GetCurrentCritChance(Player->GetWeaponType())) == 1)  //normal hit
+	if (Hit == 1)  //normal hit
 	{
 		if (GoodWeapon(Player->GetWeaponType(), Enemy->GetType()) == true)
 		{
@@ -79,7 +80,7 @@ void Combat::PlayerHitsEnemy(Player* Player, Enemy* Enemy)
 			std::cout << Player->GetName() << " hits " << Enemy->GetName() << " for " << Dmg << ". " << Enemy->GetName() << " has " << Enemy->GetCurrentHP() << "/" << Enemy->GetTotalHP() << " HP left.\n";
 		}
 	}
-	if (HitType(rand(), Player->GetCurrentMissChance(Player->GetWeaponType()), Player->GetCurrentCritChance(Player->GetWeaponType())) == 2)  //crit
+	if (Hit == 2)  //crit
 	{
 		if (GoodWeapon(Player->GetWeaponType(), Enemy->GetType()) == true)
 		{
@@ -106,11 +107,12 @@ void Combat::PlayerHitsEnemy(Player* Player, Enemy* Enemy)
 
 void Combat::EnemyHitsPlayer(Player* Player, Enemy* Enemy)
 {
-	if (HitType(rand(), Enemy->GetMissChance(), Enemy->GetCritChance()) == 0)  //miss
+	int Hit = HitType(rand(), Enemy->GetMissChance(), Enemy->GetCritChance());
+	if (Hit == 0)  //miss
 	{
 		std::cout << Enemy->GetName() << " missed!\n";
 	}
-	if (HitType(rand(), Enemy->GetMissChance(), Enemy->GetCritChance()) == 1)  //normal hit
+	if (Hit == 1)  //normal hit
 	{
 		int Dmg = GetDmg(Enemy->GetMinDmg(), Enemy->GetMaxDmg());
 		Player->SetCurrentHP(Player->GetCurrentHP() - Dmg);
@@ -120,7 +122,7 @@ void Combat::EnemyHitsPlayer(Player* Player, Enemy* Enemy)
 		}
 		std::cout << Enemy->GetName() << " hits " << Player->GetName() << " for " << Dmg << ". " << Player->GetName() << " has " << Player->GetCurrentHP() << "/" << Player->GetTotalHP() << " HP left.\n";
 	}
-	if (HitType(rand(), Enemy->GetMissChance(), Enemy->GetCritChance()) == 2)  //crit
+	if (Hit == 2)  //crit
 	{
 		int Dmg = GetDmg(Enemy->GetMinDmg(), Enemy->GetMaxDmg());
 		Player->SetCurrentHP(Player->GetCurrentHP() - Dmg * 2);
