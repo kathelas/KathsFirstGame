@@ -1,0 +1,4 @@
+﻿  CombatSimulator.cpp
+c:\users\maxi\desktop\c++ stuff\a\1stprogram\combatsimulator\combatsimulator\combatsimulator.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  CombatSimulator.vcxproj -> C:\Users\Maxi\Desktop\C++ stuff\A\1stprogram\CombatSimulator\Debug\CombatSimulator.exe
+  CombatSimulator.vcxproj -> C:\Users\Maxi\Desktop\C++ stuff\A\1stprogram\CombatSimulator\Debug\CombatSimulator.pdb (Partial PDB)
